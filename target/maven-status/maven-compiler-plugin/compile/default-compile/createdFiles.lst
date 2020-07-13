@@ -1,0 +1,7 @@
+pageObjects\GS_Store_PageObjects.class
+resources\Base.class
+pageObjects\GS_Checkout_PageObjects.class
+pageObjects\GS_LestShop_PageObjects.class
+resources\Listeners.class
+resources\Utills.class
+resources\ExtentReporterNG.class
