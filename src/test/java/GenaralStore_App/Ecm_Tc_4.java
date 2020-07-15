@@ -1,12 +1,16 @@
 package GenaralStore_App;
 
 import java.net.MalformedURLException;
-import resources.Base;
+import resources.AppiumBase;
 import resources.Utills;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import io.appium.java_client.TouchAction;
@@ -23,18 +27,22 @@ import pageObjects.GS_Checkout_PageObjects;
 import pageObjects.GS_LestShop_PageObjects;
 import pageObjects.GS_Store_PageObjects;
 
-public class Ecm_Tc_4 extends Base{
+public class Ecm_Tc_4 extends AppiumBase{
 
 
+	@BeforeClass
+	public void startAppiumServer() throws Throwable {
+		emulatorStart();
+		System.out.println("emulator started");
+		appiumServer("start");
+		System.out.println("server started");
+		
+	}
 	@Test
 	public void cartSum() throws IOException, Throwable {
 
 
-		appiumStartServer();
-		Thread.sleep(10000);
-
-
-		driver=capabulities("GeneralStore");
+		driver=capabilities("GeneralStore");
 
 
 		GS_LestShop_PageObjects gl=new GS_LestShop_PageObjects(driver);
@@ -82,15 +90,18 @@ public class Ecm_Tc_4 extends Base{
 		ut.touchOptions(checkbox, tc);
 		gc.button1.click();
 		gc.buttonProceed.click();
-
-		appiumStartServer().stop();
-
 	}
 
 	public static double getAmount(String value) {
-
 		return Double.parseDouble(value.substring(1));
-
 	}
-
+	
+	@AfterClass
+	public void stopAppiumServer() {
+		appiumServer("stop");
+		System.out.println("server stoped");
+	}
 }
+
+
+

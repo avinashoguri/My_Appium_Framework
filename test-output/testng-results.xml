@@ -2,16 +2,24 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="81003" started-at="2020-07-13T13:08:06Z" finished-at="2020-07-13T13:09:27Z">
+  <suite name="Suite" duration-ms="74104" started-at="2020-07-15T17:32:09Z" finished-at="2020-07-15T17:33:23Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="81003" started-at="2020-07-13T13:08:06Z" finished-at="2020-07-13T13:09:27Z">
+    <test name="Store app" duration-ms="74104" started-at="2020-07-15T17:32:09Z" finished-at="2020-07-15T17:33:23Z">
       <class name="GenaralStore_App.Ecm_Tc_4">
-        <test-method status="PASS" signature="cartSum()[pri:0, instance:GenaralStore_App.Ecm_Tc_4@70be0a2b]" name="cartSum" duration-ms="80984" started-at="2020-07-13T18:38:06Z" finished-at="2020-07-13T18:39:27Z">
+        <test-method status="PASS" signature="startAppiumServer()[pri:0, instance:GenaralStore_App.Ecm_Tc_4@6b19b79]" name="startAppiumServer" is-config="true" duration-ms="26475" started-at="2020-07-15T23:02:09Z" finished-at="2020-07-15T23:02:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startAppiumServer -->
+        <test-method status="PASS" signature="cartSum()[pri:0, instance:GenaralStore_App.Ecm_Tc_4@6b19b79]" name="cartSum" duration-ms="47486" started-at="2020-07-15T23:02:35Z" finished-at="2020-07-15T23:03:23Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- cartSum -->
+        <test-method status="PASS" signature="stopAppiumServer()[pri:0, instance:GenaralStore_App.Ecm_Tc_4@6b19b79]" name="stopAppiumServer" is-config="true" duration-ms="107" started-at="2020-07-15T23:03:23Z" finished-at="2020-07-15T23:03:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- stopAppiumServer -->
       </class> <!-- GenaralStore_App.Ecm_Tc_4 -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- Store app -->
+  </suite> <!-- Suite -->
 </testng-results>

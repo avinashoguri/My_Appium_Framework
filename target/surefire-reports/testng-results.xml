@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="72899" started-at="2020-07-15T17:39:01Z" finished-at="2020-07-15T17:40:14Z">
+    <groups>
+    </groups>
+    <test name="Store app" duration-ms="72899" started-at="2020-07-15T17:39:01Z" finished-at="2020-07-15T17:40:14Z">
+      <class name="GenaralStore_App.Ecm_Tc_4">
+        <test-method status="PASS" signature="startAppiumServer()[pri:0, instance:GenaralStore_App.Ecm_Tc_4@2ed0fbae]" name="startAppiumServer" is-config="true" duration-ms="26938" started-at="2020-07-15T23:09:01Z" finished-at="2020-07-15T23:09:28Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startAppiumServer -->
+        <test-method status="PASS" signature="cartSum()[pri:0, instance:GenaralStore_App.Ecm_Tc_4@2ed0fbae]" name="cartSum" duration-ms="45834" started-at="2020-07-15T23:09:28Z" finished-at="2020-07-15T23:10:14Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- cartSum -->
+        <test-method status="PASS" signature="stopAppiumServer()[pri:0, instance:GenaralStore_App.Ecm_Tc_4@2ed0fbae]" name="stopAppiumServer" is-config="true" duration-ms="105" started-at="2020-07-15T23:10:14Z" finished-at="2020-07-15T23:10:14Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- stopAppiumServer -->
+      </class> <!-- GenaralStore_App.Ecm_Tc_4 -->
+    </test> <!-- Store app -->
+  </suite> <!-- Suite -->
+</testng-results>

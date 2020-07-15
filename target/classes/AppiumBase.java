@@ -1,8 +1,11 @@
+
 package resources;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.ServerSocket;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,40 +15,76 @@ import java.util.concurrent.TimeUnit;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.Test;
 
-import bsh.Capabilities;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 
-public class Base {
+
+public class AppiumBase {
 
 	public static AppiumDriverLocalService service;
 	public static AndroidDriver<AndroidElement> driver;
 
-	public AppiumDriverLocalService appiumStartServer() {
-		service=AppiumDriverLocalService.buildDefaultService();
-		service.start();
+
+	public AppiumDriverLocalService appiumServer(String cmd)
+	{
+		if(cmd.equalsIgnoreCase("start")) {
+
+			boolean flag=checkIfServerIsRunnning(4723);
+			if(!flag)
+			{
+				
+				service=AppiumDriverLocalService.buildDefaultService();
+				service.start();
+			
+			}
+			return service;
+			
+		}else if(cmd.equalsIgnoreCase("stop")) {
+		//	service=AppiumDriverLocalService.buildDefaultService();
+			service.stop();
+			
+		}
 		return service;
 
+
 	}
+
+	public static boolean checkIfServerIsRunnning(int port) {
+
+		boolean isServerRunning = false;
+		ServerSocket serverSocket;
+		try {
+			serverSocket = new ServerSocket(port);
+
+			serverSocket.close();
+		} catch (IOException e) {
+			//If control comes here, then it means that the port is in use
+			isServerRunning = true;
+		} finally {
+			serverSocket = null;
+		}
+		return isServerRunning;
+	}
+
 
 	public static void emulatorStart() throws Throwable {
 		try {
 			Runtime.getRuntime().exec(System.getProperty("user.dir")+"\\src\\main\\java\\resources\\Emulator.bat");
+			Thread.sleep(20000);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Thread.sleep(6000);
+		
 	}
 
-	public static AndroidDriver<AndroidElement> capabulities(String appName) throws IOException{
+	public static AndroidDriver<AndroidElement> capabilities(String appName) throws IOException{
 		// TODO Auto-generated method stub
+
 
 		FileInputStream pf=new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\java\\resources\\data.properties");
 
@@ -66,18 +105,8 @@ public class Base {
 		//AVIPie
 		cap.setCapability(MobileCapabilityType.DEVICE_NAME,prop.getProperty("emulator"));
 
-		
-		if(prop.getProperty("emulator").equalsIgnoreCase("AVIPie")) {
-			try {
-				emulatorStart();
-			} catch (Throwable e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 
-		}else {
-			// give real device name in the cap field
-		}
+		
 
 		cap.setCapability(MobileCapabilityType.AUTOMATION_NAME,"uiautomator2");
 		//cap.setCapability(MobileCapabilityType.VERSION, "5.1.1");//9.0
@@ -91,9 +120,11 @@ public class Base {
 		driver.manage().timeouts().implicitlyWait(16, TimeUnit.SECONDS);
 
 		return driver;
+		
 
 	}
 
+	
 	public static void getScreenshot(String result) throws IOException
 	{
 		//time and date stamp

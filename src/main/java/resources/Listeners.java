@@ -23,7 +23,7 @@ public class Listeners implements ITestListener {
 		// TODO Auto-generated method stub
 		String s=result.getName();
 		try {
-			Base.getScreenshot(s);
+			AppiumBase.getScreenshot(s);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
